@@ -1,5 +1,5 @@
 # Azure Helper介绍
-[Azure Helper @azure_Managerbot](https://t.me/azure_Managerbot)管理azure账号，进行创建机器，开关机，换IP，删除机器等操作，同时采用多线程的方式批量创建机器，创建n台机器用时1min左右。
+[Azure Helper @azure_Managerbot](https://t.me/azure_Managerbot)可以辅助管理azure账号，进行创建机器，开关机，换IP，删除机器等操作，同时采用多线程的方式批量创建机器，创建n台机器用时1min左右。
 
 Azure Helper创建的机器均为安全组全开、随机用户名、随机密码的机器。
 
