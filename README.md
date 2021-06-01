@@ -115,3 +115,17 @@ az provider register --namespace Microsoft.Compute && az provider register --nam
 
 参考文档/故障排除：[Azure cli](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)
 
+
+
+授权码：
+
+EHqhJBrjSoEGkHUnxyVPPTIN
+nHEGCKBkottvoaEgdUlNsvmI
+LtflPAzPoqpVjsvcWypsTkYj
+KCbIbwgUjCLRLQNEgYEKhkWq
+fKnkVWMVDXPMsZalfynUxagS
+xDxFpMfYKLsbnrFSfhEvBjIQ
+vBsbLIDWbaOrVMPuxWbqIioC
+EWDcQENywkTLnnXDTVMvmOLr
+BUBAeyxVMjgGHxSSWRwaGYjm
+DhfxopwbfWSyblYtSaWVYQTM
