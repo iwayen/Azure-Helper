@@ -1,23 +1,27 @@
 # Azure Helper介绍
-Azure Helper可以帮助我们管理azure账号，进行创建机器，开关机，换IP，删除机器等操作，同时采用多线程的方式批量创建机器，创建n台机器用时1min左右。该机器人采用api操作，降低登录的风控问题，但并不代表可以完全规避风控，请自行决定是否使用。
+Azure Helper管理azure账号，进行创建机器，开关机，换IP，删除机器等操作，同时采用多线程的方式批量创建机器，创建n台机器用时1min左右。
 
-![主菜单](https://z3.ax1x.com/2021/06/01/2uMwTA.png)
+Azure Helper创建的机器均为安全组全开、随机用户名、随机密码的机器。
 
-![2uMaeH.png](https://z3.ax1x.com/2021/06/01/2uMaeH.png)
+Azure Helper采用rest api进行操作，降低登录的风控问题，但并不代表可以完全规避风控，请自行决定是否使用。
 
-![2uMdwd.png](https://z3.ax1x.com/2021/06/01/2uMdwd.png)
+![](https://i0.hdslb.com/bfs/album/4008c8e66155abafd08279eb6f94ffe06903f91b.png)
 
-![2uMNOe.png](https://z3.ax1x.com/2021/06/01/2uMNOe.png)
+![](https://i0.hdslb.com/bfs/album/6911e6284097ec1fecba402c04d85ee0a0218e29.png)
 
-![2uMDYt.png](https://z3.ax1x.com/2021/06/01/2uMDYt.png)
+![](https://i0.hdslb.com/bfs/album/047323ab7e47bde6d5290857e3699c1002c99997.png)
 
-![2uMySf.png](https://z3.ax1x.com/2021/06/01/2uMySf.png)
+![](https://i0.hdslb.com/bfs/album/bd30ea782526673e65a628490173c80707431cce.png)
 
-![2uMrfP.png](https://z3.ax1x.com/2021/06/01/2uMrfP.png)
+![](https://i0.hdslb.com/bfs/album/500ce6e6c0fca44c4500cac81f6983f0a7185ab2.png)
 
-![2uMBFI.png](https://z3.ax1x.com/2021/06/01/2uMBFI.png)
+![](https://i0.hdslb.com/bfs/album/6697742a882fac296cca7caa499b89127d1d214a.png)
 
-# Azure helper使用
+![](https://i0.hdslb.com/bfs/album/5304e607b20ec3892f892c24344113b5e3bac2eb.png)
+
+![](https://i0.hdslb.com/bfs/album/8bf79e3b3e2610edfdbf0acefb04f060e59cd4e3.png)
+
+# Azure Helper使用
 
 面板基于rest api进行部署操作，所以我们需要先获取api，获取api目前只可以通过cli进行获取，可以采用azure提供的cloudshell进行获取，也可以通过本地安装的azure cli进行获取，[官方教程](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)
 
@@ -99,6 +103,15 @@ sudo yum install azure-cli
 az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && az ad sp create-for-rbac
 ```
 
+## 通过cloudshell进行获取
 
-# 参考文档/故障排除：[Azure cli](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)
+在azure管理后台打开cloudshell，直接输入命令即可获取api，无需登录操作      
+
+```
+az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && az ad sp create-for-rbac
+```
+# note
+由于每个订阅在第一次开机之前都需要先申请有关权限，也就是命令中的`az provider register --namespace`相关部分，而这一操作是需要一点时间的，所以在获取api之后需要等几分钟再去bot中开机，不然在创建机器时会报错。
+
+参考文档/故障排除：[Azure cli](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)
 
