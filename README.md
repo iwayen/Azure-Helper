@@ -3,7 +3,7 @@
 
 Azure Helper创建的机器均为安全组全开、随机用户名、随机密码的机器。
 
-Azure Helper采用rest api进行操作，降低登录的风控问题，但并不代表可以完全规避风控，请自行决定是否使用。
+Azure Helper采用rest api进行操作，降低登录开机导致的风控问题，但并不代表可以完全规避风控，请自行决定是否使用。
 
 ![](https://i0.hdslb.com/bfs/album/4008c8e66155abafd08279eb6f94ffe06903f91b.png)
 
