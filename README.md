@@ -38,7 +38,7 @@ Azure Helper采用rest api进行操作，降低登录开机导致的风控问题
 登录完成之后运行下面命令开通订阅的开机权限以及申请api
 ```
 :: For cmd
-az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && subscriptionid=$(az account list --query "[*].id" -o tsv) && az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
+az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && sub_id=$(az account list --query [].id -o tsv)  && echo $sub_id
 ```
 
 ```
@@ -52,8 +52,8 @@ az provider register --namespace Microsoft.ChangeAnalysis
 az provider register --namespace Microsoft.Advisor
 az provider register --namespace Microsoft.PolicyInsights
 az provider register --namespace Microsoft.GuestConfiguration
-subscriptionid=$(az account list --query "[*].id" -o tsv)
-az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
+$sub_id=$(az account list --query [].id -o tsv)
+az ad sp create-for-rbac --role owner --scopes /subscriptions/$sub_id
 ```
 ![获取api结果](https://www.hualigs.cn/image/60b5eea1e1964.jpg)
 
