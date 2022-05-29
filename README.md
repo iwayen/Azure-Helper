@@ -38,20 +38,11 @@ Azure Helper采用rest api进行操作，降低登录开机导致的风控问题
 登录完成之后运行下面命令开通订阅的开机权限以及申请api
 ```
 :: For cmd
-az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && sub_id=$(az account list --query [].id -o tsv)  && echo $sub_id
+subscriptionid=$(az account list --query "[*].id" -o tsv) && az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
 ```
 
 ```
 # For powershell
-az provider register --namespace Microsoft.Compute
-az provider register --namespace Microsoft.Security
-az provider register --namespace Microsoft.Network
-az provider register --namespace Microsoft.Storage
-az provider register --namespace Microsoft.ResourceHealth
-az provider register --namespace Microsoft.ChangeAnalysis
-az provider register --namespace Microsoft.Advisor
-az provider register --namespace Microsoft.PolicyInsights
-az provider register --namespace Microsoft.GuestConfiguration
 $sub_id=$(az account list --query [].id -o tsv)
 az ad sp create-for-rbac --role owner --scopes /subscriptions/$sub_id
 ```
@@ -66,7 +57,7 @@ az ad sp create-for-rbac --role owner --scopes /subscriptions/$sub_id
 后续步骤同windows端
 
 ```
-az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && subscriptionid=$(az account list --query "[*].id" -o tsv) && az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
+subscriptionid=$(az account list --query "[*].id" -o tsv) && az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
 ```
 
 ### 3）Linux端：
@@ -101,7 +92,7 @@ sudo yum install azure-cli
 后续步骤同windows端      
 
 ```
-az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && az ad sp create-for-rbac --role owner
+subscriptionid=$(az account list --query "[*].id" -o tsv) && az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
 ```
 
 ## 通过cloudshell进行获取
@@ -109,24 +100,9 @@ az provider register --namespace Microsoft.Compute && az provider register --nam
 在azure管理后台打开cloudshell，直接输入命令即可获取api，无需登录操作      
 
 ```
-az provider register --namespace Microsoft.Compute && az provider register --namespace Microsoft.Security && az provider register --namespace Microsoft.Network && az provider register --namespace Microsoft.Storage && az provider register --namespace Microsoft.ResourceHealth && az provider register --namespace Microsoft.ChangeAnalysis && az provider register --namespace Microsoft.Advisor && az provider register --namespace Microsoft.PolicyInsights && az provider register --namespace Microsoft.GuestConfiguration  && az ad sp create-for-rbac --role owner
+subscriptionid=$(az account list --query "[*].id" -o tsv) && az ad sp create-for-rbac --role owner --scopes /subscriptions/$subscriptionid
 ```
 # note
 由于每个订阅在第一次开机之前都需要先申请有关权限，也就是命令中的`az provider register --namespace`相关部分，而这一操作是需要一点时间的，所以在获取api之后需要等几分钟再去bot中开机，不然在创建机器时会报错。
 
 参考文档/故障排除：[Azure cli](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)
-
-
-
-授权码：
-
-EHqhJBrjSoEGkHUnxyVPPTIN
-nHEGCKBkottvoaEgdUlNsvmI
-LtflPAzPoqpVjsvcWypsTkYj
-KCbIbwgUjCLRLQNEgYEKhkWq
-fKnkVWMVDXPMsZalfynUxagS
-xDxFpMfYKLsbnrFSfhEvBjIQ
-vBsbLIDWbaOrVMPuxWbqIioC
-EWDcQENywkTLnnXDTVMvmOLr
-BUBAeyxVMjgGHxSSWRwaGYjm
-DhfxopwbfWSyblYtSaWVYQTM
